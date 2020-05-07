@@ -4,6 +4,7 @@
 <head>
     <title>Mzamomtsha website</title>
     <link rel="stylesheet" type="text/css" href="CSS/Home_page.css">
+    <link rel="stylesheet" type="text/css" href="CSS/About_us.css">
     <link rel="stylesheet" type="text/css" href="CSS/Events_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -22,7 +23,7 @@
     <!-- Navigation Bar -->
     <div style="nav-index: auto;" class="flex-container2 " id="navbar">
       <div style="flex-grow: 4"><a href="#" class="Navbar_buttons">HOME</div>
-      <div style="flex-grow: 4;"><a href="#about" class="Navbar_buttons">ABOUT</a></div>
+      <div style="flex-grow: 4;"><a href="#About_us" class="Navbar_buttons">ABOUT</a></div>
       <div style="flex-grow: 4"><a href="#Events_page" class="Navbar_buttons">EVENTS</a></div>
     </div>
     
@@ -115,25 +116,25 @@
                                   None of us could figure out how to fix this-->
     <div class="flex-container4 button2">
       <div><button type="button" class="Homepage_buttons">OPEN HOUSE</button></div>
-      <div><button type="button" class="Homepage_buttons">PRIMARY ACADEMY</button></div>
+      <div><button type="button" class="Homepage_buttons">ACADEMICS</button></div>
       <div><button type="button" class="Homepage_buttons">CONTACT US</button></div>
     </div>
   
     <!-- Blog -->
     <div class="flex-container5">
-      <div>
-        <h4 style="font-weight: bold; text-align: center;">Blog Post</h4>
-        <h5 style="font-weight: bold">Yet more slime, Sep 2, 2020</h5>
-        <p>The last group for <b>Science club</b> this year finished off their final session with the ever-popular slime
+      <div style="width: 70%;">
+        <h4 style="font-weight: bold; text-align: center;font-size: 24px;">Blog Post</h4>
+        <h5 style="font-weight: bold;font-size: 26px;">Yet more slime, Sep 2, 2020</h5>
+        <p style="font-size: 24px;">The last group for <b>Science club</b> this year finished off their final session with the ever-popular slime
           recipe.
           A mixture of PVA glue, shaving foam and eye wash produced this super-stretchy slime that was great fun to
           explore and play with.</p>
-        <p>When the ingredients are mixed together,
+        <p style="font-size: 24px;">When the ingredients are mixed together,
           there is a chemical reaction that joins the molecules in the PVA glue together and the mixture behaves as a
           ‘Non-Newtonian fluid” –
           which means that it becomes hard and solid when it is pressed,
           but runny and oozy when you let go. Here are some of the things we could do with slime!</p>
-        <h6 style="font-weight: bold">Posted by mr Abrahams</h6>
+        <h6 style="font-weight: bold; font-size: 24px;">Posted by mr Abrahams</h6>
       </div>
       <!-- I added a image that relates to this blog post, it can be added if need be although it wasn't on our wire frame
                                   or we can see once the website is done-->
@@ -142,12 +143,67 @@
 </div>
 <!--End of home page-->
 
+<!--About us page-->
+<div id="About_us">
+
+  <h1 class="About_page_headings">About Us</h1>
+  <div class="History">
+    <h1>Mission</h1>
+    <p class="About_us_info">Mzamomtsha Primary School at Mfuleni, Driftsands, Western Cape.
+
+      Our mission is to develop students with active and creative minds, a sense of understanding
+      and compassion for others, and the courage to act on their beliefs.
+      We stress the total development of each child: spiritual, moral, intellectual, social, emotional, and physical.
+
+      Mzamomtsha Primary School is a public primary school. In 2014 there were 293 registered learners, including 51
+      Grade R learners.
+
+      in 2010 we manage to get 100% pass rate in all our grades.
+      By the of 2013 we received a sponsorship from Powerade as we were amongst the best athletes in Western Cape
+      Our Rugby Team became the winners of the Western Cape School Rugby Tournaments in 2019</p>
+  </div>
+  <br>
+  <br>
+  <div class="Vision">
+    <h1>Vision</h1>
+    <p class="About_us_info">
+      At Mzamomtsha Primary we strive for excellence and technological expansion as our school grows in this new aged
+      world.
+      Our vision for the future is to upgrade the facilities at our school to ensure all our children have equal
+      opportunities in a world where technology rules.
+      We want them to be equipped with relevant skills and a mind that can understand the new expansions within the
+      technological field.
+      Mzamomtsha Primary ensures all employed staff are catered to their jobs in highest capability to ensure they push
+      the students to their highest potential.
+      We supply an open and safe environment to the children to ensure the diversity and individuality of future
+      employees.
+      Our school implements a system of values per grade to ensure the children learn valuable life values through
+      yearly activities that are able to be used to their benefit in future work environments.
+      We strive for academic achievements as we have included compulsory after-school classes for the struggling
+      students to achieve at their maximum capability.
+    </p>
+  </div>
+  <!-- partial:index.partial.html -->
+  <h1 style="width: 100%;font-size: 35px;text-align: center;padding-top: 20px;">Need directions?</h1>
+  <div class="container">
+    <div id="map_container"></div>
+    <div id="map"></div>
+  </div>
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/noisy/1.2/jquery.noisy.min.js'></script>
+  <script src="JS/About_page_script.js"></script>
+
+</div>
+<!--End of About us page-->
+
  <!--Events page-->   
 <div id="Events_page">
 
 <!--Events page header-->
     <div class="Events_header">
-        <h1 style="color:white;font-size: 30px;">Events:</h1>
+        <h1 style="color:white;font-size: 40px;">Events:</h1>
     </div>
 
 <!--Calendar section-->
@@ -160,42 +216,42 @@
 <!--Contact us-->
   <div class="Contact_us">
     <form action="" method="GET">
-      <p style="color:white; text-align: center;font-size: 45px;">Contact us</p>
+      <p style="color:white; text-align: center;font-size: 40px;">Contact us</p>
 <!--info-->
     <div class="info">
       <div>
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname" value="John">
+        <label for="fname" class="Contact_us_Labels">First name:</label>
+        <input type="text" id="fname" name="fname" value="John" class="Contact_us_input">
       </div>
   
      <div>
-        <label for="fsname">Surname:</label>
-        <input type="text" id="fsname" name="fsname" value="Wick">
+        <label for="fsname" class="Contact_us_Labels">Surname:</label>
+        <input type="text" id="fsname" name="fsname" value="Wick" class="Contact_us_input">
      </div>
   
       <div>
-        <label for="number">Tel number:</label>
-       <input type="text" id="number" name="number" value="079 642 6451">
+        <label for="number" class="Contact_us_Labels">Tel number:</label>
+       <input type="text" id="number" name="number" value="079 642 6451" class="Contact_us_input"> 
       </div>
     </div>
 <!--End of info-->
 <!--organisation-->
     <div class="organisation">
       <div style="padding-right:70px;">
-        <label for="forg">Organisation name:</label>
-        <input type="text" id="forg" name="forg" value="NA">
+        <label for="forg" class="Contact_us_Labels">Organisation name:</label>
+        <input type="text" id="forg" name="forg" value="NA" class="Contact_us_input">
       </div>
   
       <div>
-        <label for="femail">Email:</label>
-        <input type="text" id="femail" name="femail" value="John@gmail.com">
+        <label for="femail" class="Contact_us_Labels">Email:</label>
+        <input type="text" id="femail" name="femail" value="John@gmail.com" class="Contact_us_input">
      </div>
   
     </div>
 <!--End of organisation-->
 <!--comments-->
     <div class="comments">
-      <label for="fcomments">Comments:</label>
+      <label for="fcomments" class="Contact_us_Labels">Comments:</label>
       <textarea name="fcomments" id="fcomments" cols="40" rows="3"></textarea>
     </div>
 <!--End of comments-->

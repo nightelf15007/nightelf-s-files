@@ -1,0 +1,52 @@
+
+.About_page_headings{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 40px;
+  width: 100%;
+  background-color:#102B57;
+  color: white;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.About_us_info{
+  font-size: 24px;
+  width: 80%;
+  word-spacing: 4px;
+  text-align: center;
+}
+.container{
+  width: 100%;
+  height: 420px;
+  margin-top:20px;  
+  margin-bottom: 20px;
+  overflow: scroll;
+}
+#map{
+    width: 80%;
+    padding-bottom: 22.25%;
+    padding-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.History{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  align-content: center;
+}
+/*Vision*/
+.Vision{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  margin: auto;  
+}
+

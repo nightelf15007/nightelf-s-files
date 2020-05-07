@@ -1,0 +1,54 @@
+
+h1{
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  background:#102B57;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.h3{
+  text-align: center;
+}
+.container{
+  width: 100%;
+  margin: 0 auto;
+  margin-top:50px;
+  
+}
+
+#map_container{
+  position: relative;
+}
+#map{
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 22.25%;
+    padding-top: 30px;
+    position: relative;
+}
+
+.History{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  align-content: center;
+  
+}
+/*Vision*/
+.Vision{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: black;
+  margin: auto;
+  
+}
+
