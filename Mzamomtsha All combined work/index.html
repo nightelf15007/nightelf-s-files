@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mzamomtsha website</title>
+    <link rel="stylesheet" type="text/css" href="CSS/Home_page.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Events_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+ 
+<!--Home page-->
+<div>
+    <!-- Header -->
+    <div class="flex-container" id="#">
+      <!--   <div style="flex-grow: 2">Mzamomtsha Primary School</div> -->
+      <div style="flex-grow: 1"><img src="images/School_badge.png" alt="School Logo" style="height: 100%;"></div>
+      <!--   <div style="flex-grow: 2">Kindergardern in Cape Town</div> -->
+    </div>
+  
+    <!-- Navigation Bar -->
+    <div style="nav-index: auto;" class="flex-container2 " id="navbar">
+      <div style="flex-grow: 4"><a href="#" class="Navbar_buttons">HOME</div>
+      <div style="flex-grow: 4;"><a href="#about" class="Navbar_buttons">ABOUT</a></div>
+      <div style="flex-grow: 4"><a href="#Events_page" class="Navbar_buttons">EVENTS</a></div>
+    </div>
+    
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+        </script>
+        
+  
+    <!-- Welcome -->
+    <div class="intro"><br><b>Mzamomtsha Primary School!</b><br> A primary school with a good and rich history. <br>
+      Mzamomtsha is one of Africa's most prominent elementary schools.</div>
+  
+    <!-- Gallery No issues with the gallery-->
+    <div class="slideshow-container fade " id="#">
+      <div style="flex-grow: 8"></div>
+      <div class="slideshow-container">
+  
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="images/slide3.jpg" style="width:100%">
+  
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="images/slide1.jpg" style="width:100%">
+  
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="images/slide2.jpg" style="width:100%">
+  
+        </div>
+  
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  
+      </div>
+      <br>
+  
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+  
+      <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+  
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+  
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+  
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("dot");
+          if (n > slides.length) { slideIndex = 1 }
+          if (n < 1) { slideIndex = slides.length }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex - 1].style.display = "block";
+          dots[slideIndex - 1].className += " active";
+        }
+      </script>
+  
+  
+  
+    <!-- 3 Click Buttons - The buttons has a grey gradiant behind it that we can not seem to remove or shade in.
+                                  None of us could figure out how to fix this-->
+    <div class="flex-container4 button2">
+      <div><button type="button" class="Homepage_buttons">OPEN HOUSE</button></div>
+      <div><button type="button" class="Homepage_buttons">PRIMARY ACADEMY</button></div>
+      <div><button type="button" class="Homepage_buttons">CONTACT US</button></div>
+    </div>
+  
+    <!-- Blog -->
+    <div class="flex-container5">
+      <div>
+        <h4 style="font-weight: bold; text-align: center;">Blog Post</h4>
+        <h5 style="font-weight: bold">Yet more slime, Sep 2, 2020</h5>
+        <p>The last group for <b>Science club</b> this year finished off their final session with the ever-popular slime
+          recipe.
+          A mixture of PVA glue, shaving foam and eye wash produced this super-stretchy slime that was great fun to
+          explore and play with.</p>
+        <p>When the ingredients are mixed together,
+          there is a chemical reaction that joins the molecules in the PVA glue together and the mixture behaves as a
+          ‘Non-Newtonian fluid” –
+          which means that it becomes hard and solid when it is pressed,
+          but runny and oozy when you let go. Here are some of the things we could do with slime!</p>
+        <h6 style="font-weight: bold">Posted by mr Abrahams</h6>
+      </div>
+      <!-- I added a image that relates to this blog post, it can be added if need be although it wasn't on our wire frame
+                                  or we can see once the website is done-->
+    </div>
+</div>
+</div>
+<!--End of home page-->
+
+ <!--Events page-->   
+<div id="Events_page">
+
+<!--Events page header-->
+    <div class="Events_header">
+        <h1 style="color:white;font-size: 30px;">Events:</h1>
+    </div>
+
+<!--Calendar section-->
+    <div class="Calendar_and_images">
+        <img src="images/image_1.jpg" alt="Image_1" class="image">
+        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Africa%2FJohannesburg&amp;src=NWttaWg2Nmx2OGdib3Fua3Y4ZXYyc21mM29AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4uc2EjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23F09300&amp;color=%230B8043&amp;showTz=0&amp;showCalendars=0&amp;showPrint=0" style="border-width:0" width="600px" height="500px" frameborder="0" scrolling="no"></iframe>
+        <img src="images/Image_2.jpg" alt="Image_2" class="image">
+    </div>
+
+<!--Contact us-->
+  <div class="Contact_us">
+    <form action="" method="GET">
+      <p style="color:white; text-align: center;font-size: 45px;">Contact us</p>
+<!--info-->
+    <div class="info">
+      <div>
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname" value="John">
+      </div>
+  
+     <div>
+        <label for="fsname">Surname:</label>
+        <input type="text" id="fsname" name="fsname" value="Wick">
+     </div>
+  
+      <div>
+        <label for="number">Tel number:</label>
+       <input type="text" id="number" name="number" value="079 642 6451">
+      </div>
+    </div>
+<!--End of info-->
+<!--organisation-->
+    <div class="organisation">
+      <div style="padding-right:70px;">
+        <label for="forg">Organisation name:</label>
+        <input type="text" id="forg" name="forg" value="NA">
+      </div>
+  
+      <div>
+        <label for="femail">Email:</label>
+        <input type="text" id="femail" name="femail" value="John@gmail.com">
+     </div>
+  
+    </div>
+<!--End of organisation-->
+<!--comments-->
+    <div class="comments">
+      <label for="fcomments">Comments:</label>
+      <textarea name="fcomments" id="fcomments" cols="40" rows="3"></textarea>
+    </div>
+<!--End of comments-->
+    <div style="text-align: center;">
+      <input style="padding: 10px;" type="submit" value="Submit">
+    </div>
+    <!--End of submit button-->
+  </form>
+  </div>
+<!--End of contact us-->
+
+
+<!--Registration And Open Day-->
+<div class = "Registration_container">
+    <div class="box-1">
+        <p>
+            Sorry, registration has ended.
+        </p>
+    </div>
+
+   <div class= "box-2">
+       <p>
+           Open Day
+
+            Date: 2021/01/02 08:00AM
+            <br>
+            Location: Valengen Tambo st Cape Town
+            <br>
+       </p>
+   </div>
+</div>
+<!--End of Registration and open day-->
+
+    <!--Footer-->
+    <div class="footer">
+        <i class="fa fa-address-card" style="font-size:20px"> Email us: MzamomtshaPrimary@email.com</i>│
+        <i class="fa fa-address-book-o" style="font-size:20px"> Contact details: 021 026 7896</i>│   
+        <!--FAQ-->     
+        <a href="https://www.iol.co.za/news/south-africa/western-cape/pupils-share-chairs-at-cape-town-school-with-60-children-per-class-30774462" style="color: white;text-decoration: none;">
+            <i class="fa fa-gears" style="font-size:20px"> FAQ</i>   </a>│
+        <!--Facebok-->
+        <a href="https://www.facebook.com/pages/Mzamomtsha-Primary-Driftsands/198964430601317" style="text-decoration: none;color: white;">
+            <i class="fa fa-facebook-official" style="font-size:20px"></i></a>│
+            Designed and made by: Byte_me-_-    
+        
+    </div>
+    <!--Footer-->
+</div>
+<!--End of Events page-->
+
+</body>
+
+</html>
