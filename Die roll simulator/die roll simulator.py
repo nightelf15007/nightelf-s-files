@@ -16,7 +16,7 @@ def roll_dice():
     amount = 1 # amount of dice
     usage = amount # usage placeholder for choice 3
     while True: #endless loop
-        choice = int(input('What would you like to do?')) #get input from user
+        choice = int(input('What would you like to do? (Press "4" for the game menu)')) #get input from user
         if choice ==1: 
             try: #try to get values from user
                 min_value = 0
@@ -47,7 +47,7 @@ def roll_dice():
         elif choice == 5:
             break #break out of the while loop
         else: # if they enter an invalid input
-            print ("Please choose one of the 5 (1, 2, 3, 4, 5) options") #Tell then what they need to do
+            print ('Please choose one of the 5 (1, 2, 3, 4, 5) options. Press "4" for the game menu') #Tell then what they need to do
 roll_dice()
 
 
