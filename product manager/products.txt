@@ -1,0 +1,7 @@
+     Chips         Simba       Lays      (chips)
+Cooldrinks          Coke      Fanta  (cooldrink)
+Chocolates       Cadbury        Tex  (chocolate)
+      Pies  Pepper Steak    Chicken        (pie)
+     Fruit          Pear      Apple       Orange
+  Cupcakes       vanilla  chocolate    (cupcake)
+   Veggies       spinach    cabbage    (veggies)
