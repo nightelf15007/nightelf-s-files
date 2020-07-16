@@ -1,104 +1,34 @@
-#import everything
 import mysql.connector
-import numpy as np
+from matplotlib import pyplot as plt
 import pandas as pd
-import tkinter as tk
-from tkinter import ttk
-from tkinter import scrolledtext
+from pandas import DataFrame
+from pandastable import Table
 
+def get_db_data():
+    cols = ["id", "Product_Name", "Category", "Availible_Stock"]
 
-from mysql.connector import errorcode
-#create df
-df = pd.DataFrame(
-    [["Chips", "Simba", "Lays", ""],
-    ["Cooldrinks", "Coke", "Fanta", ""],
-    ["Chocolates", "Cadbury", "Tex", ""],
-    ["Pies", "Pepper Steak", "Chicken", ""],
-    ["Fruit", "Pear", "Apple", "Orange"],
-    ["Cupcakes", "vanilla", "chocolate", ""],
-    ["Veggies", "spinach", "cabbage", ""]],
-    columns = ["", "", "", ""],
-    index = ["a", "b", "c", "d", "e", "f", "g"])
-df.to_csv("products.txt") #write df to text file
+    mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    passwd = "admin",
+    database = "productsdb",
+    )
 
-# window
-win = tk.Tk()
-win.title("Product manager")
+    cursor = mydb.cursor()
+    cursor.execute("SELECT * FROM products")
+    data = cursor.fetchall()
+    mydb.close()
 
-# modify adding label
-aLabel = ttk.Label(win, text="A Label")
-aLabel.grid(column=0, row=0)
+    return cols, data
 
-# text box entry
-ttk.Label(win, text="Enter product:").grid(column=0, row=0)
-name = tk.StringVar()
-nameEntered = ttk.Entry(win, width=20, textvariable=name)
-nameEntered.grid(column=1, row=0)
+def display_plot():
+    df_cols, db_data = get_db_data()
+    data_df = pd.DataFrame(db_data, columns=df_cols).set_index("id")
+    
+    data_df.plot(kind='bar',x='Product_Name',y='Availible_Stock')
 
-# drop down menu
-ttk.Label(win, text="Choose a product type:").grid(column=0, row=1)
-number = tk.StringVar()
-productChosen = ttk.Combobox(win, width=17, textvariable=number)
-productChosen['values'] = ("Chips", "Cooldrinks", "Chocolates", "Pies", "Fruit", "Cupcakes", "Veggies")
-productChosen.grid(column=1, row=1)
-productChosen.current(0)
+    plt.show()  
 
-
-# scrolled text
-scr = scrolledtext.ScrolledText(win, width=75, height=10, wrap=tk.WORD)
-scr.grid(column=0, sticky='WE', columnspan=3)
-scr.insert(tk.INSERT, df)
-scr.configure(state = "disabled")
-
-# button click event (it broke :'(    )
-def onClick():
-    if productChosen.get() == "Chips":
-        with open("products.txt", "w+") as f:
-            for lines in f:
-                f.write(line.replace("(chips)", nameEntered.get()))
-                df = pd.read_csv("products.txt")
-                scr.insert(tk.INSERT, df)
-    elif productChosen.get() == "Cooldrink":
-        with open("products.txt", "w+") as f:
-            for lines in f:
-                f.write(line.replace("(cooldrink)", nameEntered.get()))
-                df = pd.read_csv("products.txt")
-                scr.insert(tk.INSERT, df)
-    elif productChosen.get() == "Pies":
-        with open("products.txt", "w+") as f:
-            for lines in f:
-                f.write(line.replace("(pie)", nameEntered.get()))
-                df = pd.read_csv("products.txt")
-                scr.insert(tk.INSERT, df)
-    elif productChosen.get() == "Chocolates":
-        with open("products.txt", "w+") as f:
-            for lines in f:
-                f.write(line.replace("(chocolate)", nameEntered.get()))
-                df = pd.read_csv("products.txt")
-                scr.insert(tk.INSERT, df)
-    elif productChosen.get() == "Fruits":
-        with open("products.txt", "w+") as f:
-            for lines in f:
-                f.write(line.replace("(fruit)", nameEntered.get()))
-                df = pd.read_csv("products.txt")
-                scr.insert(tk.INSERT, df)
-    elif productChosen.get() == "Cupcakes":
-        with open("products.txt", "w+") as f:
-            for lines in f:
-                f.write(line.replace("(cupcake)", nameEntered.get()))
-                df = pd.read_csv("products.txt")
-                scr.insert(tk.INSERT, df)
-    elif productChosen.get() == "Veggies":
-        with open("products.txt", "w+") as f:
-            for lines in f:
-                f.write(line.replace("(veggies)", nameEntered.get()))
-                df = pd.read_csv("products.txt")
-                scr.insert(tk.INSERT, df)
-
-# button
-action = ttk.Button(win, text="Add to table", command=onClick())
-action.grid(column=2, row=1)
-nameEntered.focus() #set focus to input place
-win.mainloop()
+display_plot()
 
 #Fun Fact: Charles W. Bachman designed the Integrated Database System in 1960
