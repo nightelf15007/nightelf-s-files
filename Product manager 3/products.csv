@@ -1,0 +1,61 @@
+id;Product_Name;Category;Availible_Stock
+1;Simba;Chips;1
+2;Lays;Chips;10
+3;Doritos;Chips;3
+4;Crack-A-Snack;Chips;3
+5;Bigga;Chips;1
+6;Tex;Choclate;4
+7;Cadbury;Choclate;10
+8;Bar One;Choclate;6
+9;Chomp;Choclate;3
+10;PS;Choclate;9
+11;Flake;Choclate;6
+12;Monster;Drinks;9
+13;Score;Drinks;9
+14;Toblerone;Choclate;3
+15;Fanta;Drinks;4
+16;Play;Drinks;8
+17;Dragon;Drinks;6
+18;Pepsi;Drinks;6
+19;Sprite;Drinks;5
+20;Maynards;Sweets;10
+21;Speckled Eggs;Sweets;6
+22;Strips;Sweets;1
+23;Jelly Beans;Sweets;4
+24;Brownies;Sweets;1
+25;Fudge;Sweets;7
+26;White Bread;Bread;4
+27;Aero;Choclate;1
+28;Bubbly Choclate;Choclate;4
+29;Razzle Dazzle;Chips;2
+30;Pretzels;Chips;3
+31;Spookies;Chips;10
+32;Flings;Chips;5
+33;M&M's;Sweets;7
+34;Smarties;Sweets;4
+35;Sparkles;Sweets;6
+36;Coke;Drinks;6
+37;Mountain Dew;Drinks;10
+38;Wilson;Sweets;4
+39;Tonic Water;Drinks;5
+40;Mutants;Sweets;6
+41;Toxic Waste;Sweets;7
+42;Pepper Steak;Pies;2
+43;Steak & Kidney;Pies;4
+44;Ham & Cheese;Pies;3
+45;Cheese & Salami;Pies;1
+46;Chicken & Mushroom;Pies;3
+47;Burger Pie;Pies;6
+48;Beef Burger;Burger;6
+49;Chicken Burger;Burger;3
+50;Apple;Fruits & Veggies;9
+51;Pear;Fruits & Veggies;8
+52;Tomato;Fruits & Veggies;9
+53;Grapes;Fruits & Veggies;7
+54;Banana;Fruits & Veggies;6
+55;Eggplant;Fruits & Veggies;9
+56;Mango;Fruits & Veggies;2
+57;Broccoli;Fruits & Veggies;5
+58;Carrrot;Fruits & Veggies;6
+59;Avo;Fruits & Veggies;5
+60;Cucumber;Fruits & Veggies;10
