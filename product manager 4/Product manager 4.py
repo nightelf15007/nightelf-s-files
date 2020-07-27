@@ -9,55 +9,28 @@ import json
 
 #create a class for the tool tip because they look good ;)
 class CreateToolTip(object):
-    #create a tooltip for a given widget
     def __init__(self, widget, text='widget info'):
-        self.waittime = 500     #miliseconds
-        self.wraplength = 180   #pixels
         self.widget = widget
         self.text = text
         self.widget.bind("<Enter>", self.enter)
-        self.widget.bind("<Leave>", self.leave)
-        self.widget.bind("<ButtonPress>", self.leave)
-        self.id = None
-        self.tw = None
-
+        self.widget.bind("<Leave>", self.close)
     def enter(self, event=None):
-        self.schedule()
-
-    def leave(self, event=None):
-        self.unschedule()
-        self.hidetip()
-
-    def schedule(self):
-        self.unschedule()
-        self.id = self.widget.after(self.waittime, self.showtip)
-
-    def unschedule(self):
-        id = self.id
-        self.id = None
-        if id:
-            self.widget.after_cancel(id)
-
-    def showtip(self, event=None):
         x = y = 0
         x, y, cx, cy = self.widget.bbox("insert")
         x += self.widget.winfo_rootx() + 25
         y += self.widget.winfo_rooty() + 20
-        # creates a toplevel window
+        #creates a toplevel window
         self.tw = tk.Toplevel(self.widget)
-        # Leaves only the label and removes the app window
+        #Leaves only the label and removes the app window
         self.tw.wm_overrideredirect(True)
         self.tw.wm_geometry("+%d+%d" % (x, y))
         label = tk.Label(self.tw, text=self.text, justify='left',
-                       background="#ffffff", relief='solid', borderwidth=1,
-                       wraplength = self.wraplength)
+                       background='light grey', relief='solid', borderwidth=1,
+                       font=("times", "8", "normal"))
         label.pack(ipadx=1)
-
-    def hidetip(self):
-        tw = self.tw
-        self.tw= None
-        if tw:
-            tw.destroy()
+    def close(self, event=None):
+        if self.tw:
+            self.tw.destroy()
 
 #create a class, because they look good ;)
 class Application(tk.Frame):
@@ -80,7 +53,7 @@ class Application(tk.Frame):
         self.productChosen.current(0)
         self.brandChosen = ttk.Combobox(self, textvariable=16)
         self.brandChosen['values'] = ("Simba", "Lays", "No_Brand", "BarOne", "Chomp", "Coca-Cola", "Fanta", "Flake", "Maynards", "Monster Energy", "Play", "PS", "Score", "Speckles", "Sprite", "Tex")
-        self.brandChosen.current(0) #remember to come back. I had an idea
+        self.brandChosen.current(0) 
 
         #create the buttons for the gui
         self.btnDispCat = tk.Button(self, command=self.categoryClick, text = "Display Category", height = 2, width = 14)
@@ -92,39 +65,41 @@ class Application(tk.Frame):
         #create the scrolledtext for the DB to display in
         self.scr = scrolledtext.ScrolledText(self, width=75, height=10, wrap=tk.WORD)
 
-        #place the buttons and scrolled text on the window COME BACK HERE. I need to fill in the tool tips
+        #place the buttons and scrolled text on the window
         self.lbl1.grid(row = 0, column=0, columnspan= 1)
         self.productChosen.grid(row = 0, column=1, columnspan= 1)
+        
         self.lbl2.grid(row = 2, column=0, columnspan= 1)
         self.brandChosen.grid(row = 2, column=1, columnspan= 1)
-        self.brandChosen = CreateToolTip(brandChosen, "")
+
 
         self.btnDispCat.grid(row = 3, column=0, columnspan= 1)
-        self.btnDispCat.CreateToolTip(btnDispCat, "")
+        button1_ttp = CreateToolTip(self.btnDispCat, "Displays all the products in the specified catagory")
 
         self.btnTop.grid(row = 3, column=1, columnspan= 1)
-        self.btnTop = CreateToolTip(btnTop, "")
+        button1_ttp = CreateToolTip(self.btnTop, "Display the 3 best selling products according to available stock")
 
         self.btnDeleteBrand.grid(row = 3, column=2, columnspan= 1)
-        self.btnDeleteBrand = CreateToolTip(btnDeleteBrand, "")
+        button1_ttp = CreateToolTip(self.btnDeleteBrand, "Delete products under selected brand")
 
         self.btnRestore.grid(row = 4, column=0, columnspan= 1)
-        self.btnRestore = CreateToolTip(btnRestore, "")
+        button1_ttp = CreateToolTip(self.btnRestore, "Reload the orignal file")
 
         self.btnUpdateRecord.grid(row = 4, column=1, columnspan= 1)
-        self.btnUpdateRecord = CreateToolTip(btnUpdateRecord, "")
+        button1_ttp = CreateToolTip(self.btnUpdateRecord, "Update records")
 
         self.btnLeast.grid(row = 4, column=2, columnspan= 1)
-        self.btnLeast = CreateToolTip(btnLeast, "")
+        button1_ttp = CreateToolTip(self.btnLeast, "Displays the top 5 brand with most available stock")
 
         self.scr.grid(row = 5, column=0, columnspan= 3)
-    #create a function for categoryClick event
+
+    #create a function to display products in selected catagory 
     def categoryClick(self):
         self.scr.delete('1.0', tk.END)
 
-        self.cluster = MongoClient("mongodb+srv://admin:<password>@cluster0.egabt.mongodb.net/<dbname>?retryWrites=true&w=majority")
+        self.cluster = MongoClient("mongodb+srv://admin:admin@cluster0.gjswf.mongodb.net/<dbname>?retryWrites=true&w=majority")
 
-        self.db = self.cluster["dbdata"]
+        self.db = self.cluster["DataTracker"]
         self.collection = self.db["products"]
 
         self.prod = self.productChosen.get()
@@ -133,13 +108,14 @@ class Application(tk.Frame):
             string = x["Product_Name"] + '\t' + str(x["Available_Stock"]) + '\n'
             string = string.expandtabs()
             self.scr.insert(tk.INSERT, string)
-    #create a function for 
+
+    #create a function to Display the 3 best selling products according to available stock
     def topThreeClick(self):
         self.scr.delete('1.0', tk.END)
 
-        self.cluster = MongoClient("mongodb+srv://admin:<password>@cluster0.egabt.mongodb.net/<dbname>?retryWrites=true&w=majority")
+        self.cluster = MongoClient("mongodb+srv://admin:admin@cluster0.gjswf.mongodb.net/<dbname>?retryWrites=true&w=majority")
 
-        self.db = self.cluster["dbdata"]
+        self.db = self.cluster["DataTracker"]
         self.collection = self.db["products"]
         self.top_three = self.db["top_3_products"]
 
@@ -155,13 +131,14 @@ class Application(tk.Frame):
                 string = string.expandtabs()
                 self.scr.insert(tk.INSERT, string)
                 self.cnt += 1
-    #create a function for
+
+    #create a function display everything but the selected brand
     def deleteBrands(self):
         self.scr.delete('1.0', tk.END)
 
-        self.cluster = MongoClient("mongodb+srv://admin:<password>@cluster0.egabt.mongodb.net/<dbname>?retryWrites=true&w=majority")
+        self.cluster = MongoClient("mongodb+srv://admin:admin@cluster0.gjswf.mongodb.net/<dbname>?retryWrites=true&w=majority")
 
-        self.db = self.cluster["dbdata"]
+        self.db = self.cluster["DataTracker"]
         self.collection = self.db["products"]
         self.top_three = self.db["top_3_products"]
 
@@ -172,13 +149,14 @@ class Application(tk.Frame):
                 self.collection.delete_one(x)
 
         self.scr.insert(tk.INSERT, "Deletion Succesful")
-    #create a function for
+
+    #create a function to load the original file
     def restoreDB(self):
         self.scr.delete('1.0', tk.END)
 
-        self.cluster = MongoClient("mongodb+srv://admin:<password>@cluster0.egabt.mongodb.net/<dbname>?retryWrites=true&w=majority")
+        self.cluster = MongoClient("mongodb+srv://admin:admin@cluster0.gjswf.mongodb.net/<dbname>?retryWrites=true&w=majority")
 
-        self.db = self.cluster["dbdata"]
+        self.db = self.cluster["DataTracker"]
         self.collection = self.db["products"]
 
         self.x = self.collection.delete_many({})
@@ -189,13 +167,14 @@ class Application(tk.Frame):
         self.collection.insert_many(self.file_data)
 
         self.scr.insert(tk.INSERT, "Database Restored Succesfully")
-    #create a function for
+
+    #create a function to update the products
     def updateProduct(self):
         self.scr.delete('1.0', tk.END)
 
-        self.cluster = MongoClient("mongodb+srv://admin:<password>@cluster0.egabt.mongodb.net/<dbname>?retryWrites=true&w=majority")
+        self.cluster = MongoClient("mongodb+srv://admin:admin@cluster0.gjswf.mongodb.net/<dbname>?retryWrites=true&w=majority")
 
-        self.db = self.cluster["dbdata"]
+        self.db = self.cluster["DataTracker"]
         self.collection = self.db["products"]
         self.top_three = self.db["top_3_products"]
 
@@ -207,13 +186,14 @@ class Application(tk.Frame):
 
         self.top_three.update_one(self.p_name, self.p_name_chnge)
         self.top_three.update_one(self.brand_name, self.brand_name_chnge)
-    #create a function for
+
+    #create a function to display the top 5 brand with most available stock
     def leastThreeBrands(self):
         self.scr.delete('1.0', tk.END)
 
-        self.cluster = MongoClient("mongodb+srv://admin:<password>@cluster0.egabt.mongodb.net/<dbname>?retryWrites=true&w=majority")
+        self.cluster = MongoClient("mongodb+srv://admin:admin@cluster0.gjswf.mongodb.net/<dbname>?retryWrites=true&w=majority")
 
-        self.db = self.cluster["dbdata"]
+        self.db = self.cluster["DataTracker"]
         self.collection = self.db["products"]
         self.top_three = self.db["top_3_products"]
 
